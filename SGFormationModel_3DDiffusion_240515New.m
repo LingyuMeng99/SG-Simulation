@@ -1,4 +1,4 @@
-%% Simulation of SG formation
+%% Simulation of SG formation in 3D space
 rng('shuffle')
 
 % parameter
@@ -188,6 +188,7 @@ while t <= t_total
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    % chemical reaction fluxes
     J_40s_to_43s = k_40s_to_43s.*phi_40s.*(phi_40s>phi_chem_thresh).*phi_eIF3.*(phi_eIF3>phi_chem_thresh);
     J_80s1RNA_form = k_80sRNA_form.*phi_43s.*(phi_43s>phi_chem_thresh).*phi_60s.*(phi_60s>phi_chem_thresh)...
         .*phi_RNA.*(phi_RNA>phi_chem_thresh);
@@ -210,6 +211,7 @@ while t <= t_total
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    % interactions between components
     idx = 1;
     U_40s = chi(idx,1).*phi_40s + chi(idx,2).*phi_43s + chi(idx,3).*phi_RNA + chi(idx,4).*phi_60s + ...
         chi(idx,5).*phi_80s1RNA + chi(idx,6).*phi_80s2RNA + chi(idx,7).*phi_80s3RNA + chi(idx,8).*phi_80s4RNA ...
@@ -369,7 +371,7 @@ end
 toc;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Data Process
+% Data Processing
 
 %% Plot 3D results
 for i = 10:10:N_rec

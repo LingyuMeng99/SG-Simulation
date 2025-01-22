@@ -54,15 +54,17 @@ k_80s_break = k_80s_break_ini;
 k_40s_bind_60s = k_40s_bind_60s_ini;
 k_60s_break = k_60s_break_ini;
 
+% lower limit for chemical reaction
 phi_chem_thresh = 1e-2;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% parameters for interaction energy
 lambda_mu_penalty = 0.012;
 lambda_mu_penalty_RNA = 0.025;
 lambda_mu_penalty_G3BP = 0.025;
 
-% Generate chi
+% generate chi
 chi = zeros(11,11); % 40s=1, 43s=2, RNA=3, 60s=4, 80s1-5RNA=5-9, 80s=10, G3BP=11 from 1 to 11
 chi(3,3) = 0;
 chi(11,11) = -0.3;
@@ -366,6 +368,8 @@ while t <= t_total
 end
 toc;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Data Process
 
 %% Plot 3D results
 for i = 10:10:N_rec
